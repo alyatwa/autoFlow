@@ -6,6 +6,8 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 import { IProduct } from "@/Types/product";
 import Grid from "@mui/material/Grid";
+import Chip from '@mui/material/Chip';
+import Box from "@mui/material/Box";
 
 type Props = {
 	Item: IProduct;
@@ -22,10 +24,12 @@ export default function Product({ Item, handleAddToCart }: Props) {
 					image={Item.image}
 					alt={Item.title}
 				/>
-				<CardContent sx={{ height: 100 }}>
-					<Typography gutterBottom sx={{ fontSize: 18 }} component="div">
+				<CardContent sx={{ height: 110 }}>
+					<Typography gutterBottom sx={{ fontSize: 15 }} component="div">
 						{Item.title}
 					</Typography>
+					<Box style={{ flexGrow: 1, height:10 }}></Box>
+					<Chip label={Item.category} variant="outlined" />
 				</CardContent>
 			</CardActionArea>
 			<CardActions>
