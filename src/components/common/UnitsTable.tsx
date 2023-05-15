@@ -38,8 +38,8 @@ export default function UnitsTable() {
 											className="-ml-1 mr-3 h-5 w-5 flex-shrink-0 stroke-2"
 										>
 											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
+												strokeLinecap="round"
+												strokeLinejoin="round"
 												d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
 											></path>
 										</svg>
@@ -59,8 +59,8 @@ export default function UnitsTable() {
 											className="-ml-1 mr-3 h-5 w-5 flex-shrink-0 stroke-2"
 										>
 											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
+												strokeLinecap="round"
+												strokeLinejoin="round"
 												d="M12 4.5v15m7.5-7.5h-15"
 											></path>
 										</svg>
@@ -152,8 +152,8 @@ export default function UnitsTable() {
 													className="h-5"
 												>
 													<path
-														stroke-linecap="round"
-														stroke-linejoin="round"
+														strokeLinecap="round"
+														strokeLinejoin="round"
 														d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
 													></path>
 												</svg>{" "}
@@ -173,9 +173,9 @@ export default function UnitsTable() {
 													className="-ml-0.5 mr-1 text-warning-400 h-4 w-4"
 												>
 													<path
-														fill-rule="evenodd"
+														fillRule="evenodd"
 														d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
-														clip-rule="evenodd"
+														clipRule="evenodd"
 													></path>
 												</svg>
 												Pending
@@ -210,8 +210,8 @@ export default function UnitsTable() {
 																className="w-4 h-4"
 															>
 																<path
-																	stroke-linecap="round"
-																	stroke-linejoin="round"
+																	strokeLinecap="round"
+																	strokeLinejoin="round"
 																	d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
 																></path>
 															</svg>
@@ -260,8 +260,8 @@ export default function UnitsTable() {
 													className="h-5"
 												>
 													<path
-														stroke-linecap="round"
-														stroke-linejoin="round"
+														strokeLinecap="round"
+														strokeLinejoin="round"
 														d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
 													></path>
 												</svg>{" "}
@@ -281,9 +281,9 @@ export default function UnitsTable() {
 													className="-ml-0.5 mr-1 text-success-400 h-4 w-4"
 												>
 													<path
-														fill-rule="evenodd"
+														fillRule="evenodd"
 														d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-														clip-rule="evenodd"
+														clipRule="evenodd"
 													></path>
 												</svg>
 												Active
@@ -316,8 +316,8 @@ export default function UnitsTable() {
 																className="w-4 h-4"
 															>
 																<path
-																	stroke-linecap="round"
-																	stroke-linejoin="round"
+																	strokeLinecap="round"
+																	strokeLinejoin="round"
 																	d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
 																></path>
 															</svg>
@@ -366,8 +366,8 @@ export default function UnitsTable() {
 													className="h-5"
 												>
 													<path
-														stroke-linecap="round"
-														stroke-linejoin="round"
+														strokeLinecap="round"
+														strokeLinejoin="round"
 														d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
 													></path>
 												</svg>{" "}
@@ -387,9 +387,9 @@ export default function UnitsTable() {
 													className="-ml-0.5 mr-1 text-gray-400 h-4 w-4"
 												>
 													<path
-														fill-rule="evenodd"
+														fillRule="evenodd"
 														d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
-														clip-rule="evenodd"
+														clipRule="evenodd"
 													></path>
 												</svg>
 												Inactive
@@ -422,8 +422,8 @@ export default function UnitsTable() {
 																className="w-4 h-4"
 															>
 																<path
-																	stroke-linecap="round"
-																	stroke-linejoin="round"
+																	strokeLinecap="round"
+																	strokeLinejoin="round"
 																	d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
 																></path>
 															</svg>
@@ -472,8 +472,8 @@ export default function UnitsTable() {
 													className="h-5"
 												>
 													<path
-														stroke-linecap="round"
-														stroke-linejoin="round"
+														strokeLinecap="round"
+														strokeLinejoin="round"
 														d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
 													></path>
 												</svg>{" "}
@@ -493,9 +493,9 @@ export default function UnitsTable() {
 													className="-ml-0.5 mr-1 text-success-400 h-4 w-4"
 												>
 													<path
-														fill-rule="evenodd"
+														fillRule="evenodd"
 														d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-														clip-rule="evenodd"
+														clipRule="evenodd"
 													></path>
 												</svg>
 												Active
@@ -530,8 +530,8 @@ export default function UnitsTable() {
 																className="w-4 h-4"
 															>
 																<path
-																	stroke-linecap="round"
-																	stroke-linejoin="round"
+																	strokeLinecap="round"
+																	strokeLinejoin="round"
 																	d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
 																></path>
 															</svg>
@@ -580,8 +580,8 @@ export default function UnitsTable() {
 													className="h-5"
 												>
 													<path
-														stroke-linecap="round"
-														stroke-linejoin="round"
+														strokeLinecap="round"
+														strokeLinejoin="round"
 														d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
 													></path>
 												</svg>{" "}
@@ -601,9 +601,9 @@ export default function UnitsTable() {
 													className="-ml-0.5 mr-1 text-success-400 h-4 w-4"
 												>
 													<path
-														fill-rule="evenodd"
+														fillRule="evenodd"
 														d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-														clip-rule="evenodd"
+														clipRule="evenodd"
 													></path>
 												</svg>
 												Active
@@ -638,8 +638,8 @@ export default function UnitsTable() {
 																className="w-4 h-4"
 															>
 																<path
-																	stroke-linecap="round"
-																	stroke-linejoin="round"
+																	strokeLinecap="round"
+																	strokeLinejoin="round"
 																	d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
 																></path>
 															</svg>

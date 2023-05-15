@@ -9,7 +9,7 @@ export default function Sidebar() {
 							<h1 className="h-7">
 								<div>
 									<a href="https://demo.craftable.pro/admin">
-										<span className="sr-only">Craftable PRO</span>
+										<span className="sr-only">Auto Flow</span>
                                         <img className="object-scale-down h-[43px] w-[183px]" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png"/>
 									</a>
 								</div>
@@ -25,7 +25,7 @@ export default function Sidebar() {
 										xmlns="http://www.w3.org/2000/svg"
 										fill="none"
 										viewBox="0 0 24 24"
-										stroke-width="1.5"
+										strokeWidth="1.5"
 										stroke="currentColor"
 										aria-hidden="true"
 										className="text-primary-500 mr-3 h-6 w-6 flex-shrink-0 transition-colors"
@@ -69,7 +69,7 @@ export default function Sidebar() {
 												xmlns="http://www.w3.org/2000/svg"
 												fill="none"
 												viewBox="0 0 24 24"
-												stroke-width="1.5"
+												strokeWidth="1.5"
 												stroke="currentColor"
 												aria-hidden="true"
 												className="text-gray-400 group-hover/link:text-gray-500 mr-3 h-6 w-6 flex-shrink-0 transition-colors"
@@ -90,7 +90,7 @@ export default function Sidebar() {
 												xmlns="http://www.w3.org/2000/svg"
 												fill="none"
 												viewBox="0 0 24 24"
-												stroke-width="1.5"
+												strokeWidth="1.5"
 												stroke="currentColor"
 												aria-hidden="true"
 												className="text-gray-400 group-hover/link:text-gray-500 mr-3 h-6 w-6 flex-shrink-0 transition-colors"
