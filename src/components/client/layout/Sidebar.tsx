@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Sidebar() {
 	return (
 		<>
@@ -8,7 +10,7 @@ export default function Sidebar() {
 							<div className="h-10"></div>
 							<h1 className="h-7">
 								<div>
-									<a href="https://demo.craftable.pro/admin">
+									<a href="#">
 										<span className="sr-only">Auto Flow</span>
                                         <img className="object-scale-down h-[43px] w-[183px]" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png"/>
 									</a>
@@ -17,9 +19,9 @@ export default function Sidebar() {
 						</div>
 						<div className="px-4">
 							<nav className="mt-5 space-y-1">
-								<a
+								<Link
 									className="bg-primary-100 text-gray-900 group/link flex items-center rounded-md px-2 py-2 text-sm font-medium transition-colors"
-									href="https://demo.craftable.pro/admin/dashboard"
+									href="/"
 								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +39,7 @@ export default function Sidebar() {
 										></path>
 									</svg>
 									Dashboard
-								</a>
+								</Link>
 								<div className="group/section" style={{position: 'relative'}}>
 									<div className="-ml-5 mt-4 flex items-center text-gray-400">
 										<button
@@ -63,7 +65,7 @@ export default function Sidebar() {
 									<div className="mt-2 space-y-1">
 										<a
 											className="text-gray-600 hover:bg-gray-200 hover:text-gray-900 group/link flex items-center rounded-md px-2 py-2 text-sm font-medium transition-colors"
-											href="https://demo.craftable.pro/admin/articles"
+											href="#"
 										>
 											<svg
 												xmlns="http://www.w3.org/2000/svg"

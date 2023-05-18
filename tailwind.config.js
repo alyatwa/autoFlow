@@ -13,6 +13,7 @@ module.exports = {
 			colors: {
 				primary: {
 					100: "#E0E7FF",
+					500: "#6366f1",
 					600: "#4f46e5",
 					700: "#4338CA",
 					800: "#3730a3",
@@ -20,7 +21,8 @@ module.exports = {
 				gray:{
 					100:'#f7f9fb',
 					200:'#f1f5f9',
-					300:'#e2e8f0'
+					300:'#cbd5e1',
+					800:'#1E293B',
 				},
 				warning:{
 					100:'#FEF9C3',
@@ -33,7 +35,12 @@ module.exports = {
 					800:'#166534'
 				}
 			},
+			fontFamily: {
+				spacemono: ['Space Mono', 'monospace']
+			  },
 		},
 	},
-	plugins: [],
+	plugins: [
+		require('@tailwindcss/forms')
+	],
 };

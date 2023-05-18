@@ -55,6 +55,18 @@ export default function Header() {
 									</svg>
 									New projet
 								</button>
+								<img className="w-10 h-10 rounded-full" src="https://demo.craftable.pro/media/10/conversions/400-thumb.jpg"></img>
+								<div id="dropdown" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
+    <ul className="py-2 text-sm text-gray-700">
+      <li>
+        <a href="#" className="block px-4 py-2 hover:bg-gray-100  ">Dashboard</a>
+      </li>
+       
+      <li>
+        <a href="#" className="block px-4 py-2 hover:bg-gray-100  ">Sign out</a>
+      </li>
+    </ul>
+</div>
 							</div>
 						</div>
 					</div>

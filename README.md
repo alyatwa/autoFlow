@@ -3,3 +3,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Auto flow
 
 First, 
+
+* generate types *
+`npx supabase gen types typescript --project-id " " --schema public > types/supabase.ts`

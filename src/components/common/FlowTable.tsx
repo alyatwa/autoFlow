@@ -1,8 +1,9 @@
-import Link from "next/link";
-import { useRouter } from 'next/router';
+import { BeakerIcon } from "@heroicons/react/24/solid";
+import { useState } from "react";
+import Stepper from "./Stepper";
 
-export default function UnitsTable() {
-	const { asPath } = useRouter();
+export default function FlowTable() {
+	const [cindex, setIndex] = useState(0);
 
 	return (
 		<div className="bg-white shadow sm:rounded-md">
@@ -14,64 +15,21 @@ export default function UnitsTable() {
 							<div>
 								<div className="flex gap-3">
 									<div className="text-lg font-semibold text-slate-900">
-										Available Units
+										Payment Sessions
 									</div>
 									<span
 										className="bg-purple-100 text-purple-800 rounded-full text-xs relative inline-flex items-center px-2 py-1 font-medium"
 										role="status"
 									>
-										5 Units
+										5 Session
 									</span>
 								</div>
 								<div className="mt-1 text-xs text-gray-500">
-									Keep track of units
+									Keep track of sessions
 								</div>
 							</div>
 							<div>
-								<div className="flex gap-3">
-									<button
-										type="button"
-										className="inline-flex cursor-pointer items-center justify-center rounded-md font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 border border-gray-300 bg-white text-gray-600 hover:bg-gray-50 active:bg-gray-100 shadow-sm px-4 py-2 text-xs"
-									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											strokeWidth="1.5"
-											stroke="currentColor"
-											aria-hidden="true"
-											className="-ml-1 mr-3 h-5 w-5 flex-shrink-0 stroke-2"
-										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
-											></path>
-										</svg>
-										Import
-									</button>
-									<button
-										type="button"
-										className="inline-flex cursor-pointer items-center justify-center rounded-md font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 border border-transparent text-white bg-primary-600 hover:bg-primary-700 active:bg-primary-800 shadow-sm px-4 py-2 text-xs"
-									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											strokeWidth="1.5"
-											stroke="currentColor"
-											aria-hidden="true"
-											className="-ml-1 mr-3 h-5 w-5 flex-shrink-0 stroke-2"
-										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												d="M12 4.5v15m7.5-7.5h-15"
-											></path>
-										</svg>
-										New Unit
-									</button>
-								</div>
+								<div className="flex gap-3"></div>
 							</div>
 						</div>
 					</div>
@@ -81,7 +39,76 @@ export default function UnitsTable() {
 				<div className="overflow-x-auto">
 					<div className="inline-block min-w-full align-middle">
 						<div className="relative overflow-hidden md:overflow-visible">
-							<table className="min-w-full divide-y divide-gray-200">
+							<div
+								id="accordion-flush"
+								data-accordion="collapse"
+								className="mx-6 bg-white text-gray-900"
+								data-inactive-classes="text-gray-500 "
+							>
+								{[1, 2, 3].map((acc, index) => (
+									<div
+										className="border-b"
+										key={index}
+										onClick={() => setIndex(index)}
+									>
+										<h2 id="accordion-flush-heading-1">
+											<button
+												type="button"
+												className="flex items-center justify-between w-full py-4   text-xs text-left border-gray-200"
+												data-accordion-target="#accordion-flush-body-1"
+												aria-expanded="true"
+												aria-controls="accordion-flush-body-1"
+											>
+												<span className="flex items-center">
+													<BeakerIcon className="h-4 w-4 text-gray-500 mr-2 shrink-0" />
+													<code>4d664e9b-5b68-473e-815f-2f4779efe248</code>
+
+													<span
+														className="bg-success-100 ml-2 font-sans text-success-800 rounded-full text-xs relative inline-flex items-center px-2 py-1 font-medium"
+														role="status"
+													>
+														<svg
+															xmlns="http://www.w3.org/2000/svg"
+															viewBox="0 0 24 24"
+															fill="currentColor"
+															aria-hidden="true"
+															className="-ml-0.5 mr-1 text-success-400 h-4 w-4"
+														>
+															<path
+																fillRule="evenodd"
+																d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+																clipRule="evenodd"
+															></path>
+														</svg>
+														Success
+													</span>
+												</span>
+
+												<svg
+													data-accordion-icon
+													className={`w-6 h-6 ${
+														index === cindex ? "rotate-180" : ""
+													} shrink-0`}
+													fill="currentColor"
+													viewBox="0 0 20 20"
+													xmlns="http://www.w3.org/2000/svg"
+												>
+													<path
+														fillRule="evenodd"
+														d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+														clipRule="evenodd"
+													></path>
+												</svg>
+											</button>
+										</h2>
+										<div className={index !== cindex ? "hidden" : "mx-6 my-3"}>
+											<Stepper />
+										</div>
+									</div>
+								))}
+							</div>
+
+							{/* <table className="min-w-full divide-y divide-gray-200">
 								<thead className="bg-gray-50">
 									<tr>
 										<th
@@ -94,7 +121,7 @@ export default function UnitsTable() {
 											scope="col"
 											className="p-3 text-left text-xs font-semibold text-gray-500 first-of-type:pl-4 last-of-type:pr-4 first-of-type:sm:pl-6 last-of-type:sm:pr-6"
 										>
-											Unit
+											Session
 										</th>
 										
 										<th
@@ -134,7 +161,6 @@ export default function UnitsTable() {
 														</span>
 													</div>
 												</div>
-												<Link href={`${asPath}/unit/22`}>
 												<div>
 													<div className="text-xs font-medium text-slate-900">
 														Catalog AI
@@ -142,7 +168,7 @@ export default function UnitsTable() {
 													<div className="text-xs text-slate-500">
 														catalogai.app
 													</div>
-												</div></Link>
+												</div>
 											</div>
 										</td>
 										 
@@ -656,7 +682,7 @@ export default function UnitsTable() {
 										</td>
 									</tr>
 								</tbody>
-							</table>
+							</table> */}
 						</div>
 					</div>
 				</div>
