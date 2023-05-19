@@ -9,7 +9,6 @@ export default function FlowTable({data}:{data:Unit}) {
 	const flowTime = (flows:any) =>{
 		if (flows.length == 0) return 0;
 		let firstItem = new Date(flows.slice(0, 1).shift().created_at);
-		console.log(flows)
 		let lastItem = new Date(flows[flows.length-1].created_at);
 		let duration = Math.abs((firstItem.getTime() - lastItem.getTime())/(1000*60))
 		return Math.floor(duration);

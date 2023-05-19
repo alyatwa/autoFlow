@@ -6,13 +6,23 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 
 export default function Page(props:any) {
+	const breadcrumb = [{
+		title:props.data.project.name,
+		id:props.data.project.id,
+		herf:`/project/${props.data.project.id}`
+	},{
+		title:props.data.title,
+		id:'0',
+		herf:'#'
+	}
+	]
 	return (
 		<ClientLayout>
 			<Head>
-				<title>Unit</title>
+				<title>{props.data.title} Unit</title>
 			</Head>
 			<>
-			<Breadcrumb/>
+			<Breadcrumb data={breadcrumb}/>
 			<FlowTable data={props.data} />
 			</>
 		</ClientLayout>
@@ -23,8 +33,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const supabase = createServerSupabaseClient(context);
 	const { data, error } = await supabase
 			  .from("unit")
-			  .select('*, session(*, flow(*))')
+			  .select('*, project(name, id), session(*, flow(*))')
 			  .eq('id', id)
+			  .order('created_at', {foreignTable: 'session.flow'})
 			  .single();
 	return {
 	  props: { data},
