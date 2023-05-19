@@ -1,9 +1,12 @@
+import { Database } from "@/types/supabase";
 import Link from "next/link";
 import { useRouter } from 'next/router';
+type Project = Database['public']['Tables']['project']['Row']
 
-export default function UnitsTable() {
+export default function UnitsTable({project}:{project:Project}) {
 	const { asPath } = useRouter();
-
+			  
+	
 	return (
 		<div className="bg-white shadow sm:rounded-md">
 			<div className="border-b border-b-gray-200 px-4 py-3 text-gray-900 sm:rounded-t-md sm:px-6 sm:py-4 border border-transparent">
@@ -14,13 +17,13 @@ export default function UnitsTable() {
 							<div>
 								<div className="flex gap-3">
 									<div className="text-lg font-semibold text-slate-900">
-										Available Units
+										{project.name} Units
 									</div>
 									<span
 										className="bg-purple-100 text-purple-800 rounded-full text-xs relative inline-flex items-center px-2 py-1 font-medium"
 										role="status"
 									>
-										5 Units
+										{project.unit.length} Units
 									</span>
 								</div>
 								<div className="mt-1 text-xs text-gray-500">
@@ -97,17 +100,12 @@ export default function UnitsTable() {
 											Unit
 										</th>
 										
+
 										<th
 											scope="col"
 											className="p-3 text-left text-xs font-semibold text-gray-500 first-of-type:pl-4 last-of-type:pr-4 first-of-type:sm:pl-6 last-of-type:sm:pr-6"
 										>
-											Last Run
-										</th>
-										<th
-											scope="col"
-											className="p-3 text-left text-xs font-semibold text-gray-500 first-of-type:pl-4 last-of-type:pr-4 first-of-type:sm:pl-6 last-of-type:sm:pr-6"
-										>
-											Status
+											Session
 										</th>
 										<th
 											scope="col"
@@ -118,73 +116,33 @@ export default function UnitsTable() {
 									</tr>
 								</thead>
 								<tbody className="divide-y divide-gray-200 bg-white">
-									<tr className="">
+									{project.unit.map((unit, index)=>
+										<tr key={unit.id}>
 										<td className="px-3 py-4 text-xs text-gray-500 first-of-type:pl-4 last-of-type:pr-4 first-of-type:sm:pl-6 last-of-type:sm:pr-6">
-											1
+											{index+1}
 										</td>
 										<td className="px-3 py-4 text-xs text-gray-500 first-of-type:pl-4 last-of-type:pr-4 first-of-type:sm:pl-6 last-of-type:sm:pr-6">
-											<div className="flex gap-5">
-												<div>
-													<div className="avatar relative flex flex-shrink-0 items-center justify-center overflow-hidden bg-gray-200 h-10 w-10 text-base rounded-full">
-														<span
-															className="absolute inset-0 flex h-full w-full items-center justify-center font-medium uppercase leading-none text-white"
-															style={{backgroundColor: "rgb(175, 89, 2)"}}
-														>
-															CA
-														</span>
-													</div>
-												</div>
-												<Link href={`${asPath}/unit/22`}>
+											<div className="flex gap-5"> 
+												<Link href={`${asPath}/unit/${unit.id}`}>
 												<div>
 													<div className="text-xs font-medium text-slate-900">
-														Catalog AI
+														{unit.title}
 													</div>
 													<div className="text-xs text-slate-500">
-														catalogai.app
+														{unit.description}
 													</div>
 												</div></Link>
 											</div>
 										</td>
 										 
+									 
 										<td className="px-3 py-4 text-xs text-gray-500 first-of-type:pl-4 last-of-type:pr-4 first-of-type:sm:pl-6 last-of-type:sm:pr-6">
-											<div className="flex place-items-center">
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													fill="none"
-													viewBox="0 0 24 24"
-													strokeWidth="1.5"
-													stroke="currentColor"
-													aria-hidden="true"
-													className="h-5"
-												>
-													<path
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
-													></path>
-												</svg>{" "}
-												&nbsp; 21.12.2022 11:24
-											</div>
-										</td>
-										<td className="px-3 py-4 text-xs text-gray-500 first-of-type:pl-4 last-of-type:pr-4 first-of-type:sm:pl-6 last-of-type:sm:pr-6">
+											 
 											<span
-												className="bg-warning-100 text-warning-800 rounded-full text-xs relative inline-flex items-center px-2 py-1 font-medium"
+												className="bg-success-100 text-success-800 rounded-full text-xs relative inline-flex items-center px-2 py-1 font-medium"
 												role="status"
 											>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													viewBox="0 0 24 24"
-													fill="currentColor"
-													aria-hidden="true"
-													className="-ml-0.5 mr-1 text-warning-400 h-4 w-4"
-												>
-													<path
-														fillRule="evenodd"
-														d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
-														clipRule="evenodd"
-													></path>
-												</svg>
-												Pending
+												{unit!.session![0].count} Sessions
 											</span>
 										</td>
 										<td className="px-3 py-4 text-xs text-gray-500 first-of-type:pl-4 last-of-type:pr-4 first-of-type:sm:pl-6 last-of-type:sm:pr-6">
@@ -227,7 +185,9 @@ export default function UnitsTable() {
 											</div>
 										</td>
 									</tr>
-									<tr className="">
+									)}
+									
+									{/* <tr className="">
 										<td className="px-3 py-4 text-xs text-gray-500 first-of-type:pl-4 last-of-type:pr-4 first-of-type:sm:pl-6 last-of-type:sm:pr-6">
 											2
 										</td>
@@ -654,7 +614,7 @@ export default function UnitsTable() {
 												</div>
 											</div>
 										</td>
-									</tr>
+									</tr> */}
 								</tbody>
 							</table>
 						</div>

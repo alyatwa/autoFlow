@@ -1,9 +1,19 @@
-import { BeakerIcon } from "@heroicons/react/24/solid";
+import { BeakerIcon, ClockIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import Stepper from "./Stepper";
+import { Database } from "@/types/supabase";
+type Unit = Database['public']['Tables']['unit']['Row']
 
-export default function FlowTable() {
+export default function FlowTable({data}:{data:Unit}) {
 	const [cindex, setIndex] = useState(0);
+	const flowTime = (flows:any) =>{
+		if (flows.length == 0) return 0;
+		let firstItem = new Date(flows.slice(0, 1).shift().created_at);
+		console.log(flows)
+		let lastItem = new Date(flows[flows.length-1].created_at);
+		let duration = Math.abs((firstItem.getTime() - lastItem.getTime())/(1000*60))
+		return Math.floor(duration);
+	}
 
 	return (
 		<div className="bg-white shadow sm:rounded-md">
@@ -15,13 +25,13 @@ export default function FlowTable() {
 							<div>
 								<div className="flex gap-3">
 									<div className="text-lg font-semibold text-slate-900">
-										Payment Sessions
+										{data.title} Sessions
 									</div>
 									<span
 										className="bg-purple-100 text-purple-800 rounded-full text-xs relative inline-flex items-center px-2 py-1 font-medium"
 										role="status"
 									>
-										5 Session
+										{data.session.length} Session
 									</span>
 								</div>
 								<div className="mt-1 text-xs text-gray-500">
@@ -45,25 +55,35 @@ export default function FlowTable() {
 								className="mx-6 bg-white text-gray-900"
 								data-inactive-classes="text-gray-500 "
 							>
-								{[1, 2, 3].map((acc, index) => (
+								{data?.session?.map((session, index) => (
 									<div
 										className="border-b"
-										key={index}
+										key={session.id}
 										onClick={() => setIndex(index)}
 									>
 										<h2 id="accordion-flush-heading-1">
 											<button
 												type="button"
-												className="flex items-center justify-between w-full py-4   text-xs text-left border-gray-200"
+												className="flex items-center justify-between w-full py-4 text-xs text-left border-gray-200"
 												data-accordion-target="#accordion-flush-body-1"
 												aria-expanded="true"
 												aria-controls="accordion-flush-body-1"
 											>
 												<span className="flex items-center">
 													<BeakerIcon className="h-4 w-4 text-gray-500 mr-2 shrink-0" />
-													<code>4d664e9b-5b68-473e-815f-2f4779efe248</code>
-
+													<code>{session.tag}</code>
+													<span className="bg-gray-100 text-gray-800 text-xs font-medium mx-2 px-2.5 py-0.5 rounded">{session.flow.length} Flows on {new Date(session.created_at).toLocaleString("en-US")}</span>
+													
 													<span
+														className="bg-gray-100 ml-2 font-sans text-gray-800 rounded-full text-xs relative inline-flex items-center px-2 py-1 font-medium"
+														role="status"
+													>
+														<ClockIcon className="-ml-0.5 mr-1 text-gray-600 h-4 w-4"
+														/> 
+														{flowTime(session.flow)} Min
+													</span>
+
+													{/* <span
 														className="bg-success-100 ml-2 font-sans text-success-800 rounded-full text-xs relative inline-flex items-center px-2 py-1 font-medium"
 														role="status"
 													>
@@ -81,8 +101,9 @@ export default function FlowTable() {
 															></path>
 														</svg>
 														Success
-													</span>
+													</span> */}
 												</span>
+												
 
 												<svg
 													data-accordion-icon
@@ -102,7 +123,7 @@ export default function FlowTable() {
 											</button>
 										</h2>
 										<div className={index !== cindex ? "hidden" : "mx-6 my-3"}>
-											<Stepper />
+											<Stepper flow={session.flow} />
 										</div>
 									</div>
 								))}

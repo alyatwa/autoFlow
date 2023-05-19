@@ -1,35 +1,18 @@
 import Link from 'next/link';
 import ClientLayout from "@/components/client/layout/Index";
-import { useState, useEffect } from 'react'
-import { Database } from '../../types/supabase'
-import {
-	useQuery
-  } from '@tanstack/react-query'
-import supabase from "../../utils/supabase";
+import { Database } from '@/types/supabase';
+type Project = Database["public"]["Tables"]["project"]["Row"];
 
-
-
-export default function Dashboard(){
-	const { isLoading, isError, data, error } = useQuery({
-		queryKey: ['projects'],
-		queryFn: async () => {
-			const { data, error } = await supabase
-			  .from("project")
-			  .select()
-	  
-			if (error) {
-			  throw new Error(error.message);
-			}
-	  console.log(data)
-			return data;
-		  },
-	  })
-  
+export default function Dashboard({projects}:{projects:Project[]}){
+	 
 	return (
 		<ClientLayout>
 			<div className="grid grid-cols-3 gap-6">
-				{data && data!.map((data)=>
-				<Link href={`/project/${data.id}`}>
+				{projects.map((data)=>
+				<Link href={{
+					pathname: '/project/[id]',
+					query: { id: data.id }
+				}} key={data.id}>
 				<div className="bg-white shadow sm:rounded-md">
 				<div className="bg-white px-4 py-5 sm:p-6 sm:rounded-t-md  sm:rounded-b-md">
 					<div className="flex justify-between">

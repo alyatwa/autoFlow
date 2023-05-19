@@ -1,7 +1,11 @@
 import Head from "next/head";
 //import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import DebugHome from "./home/Home";
-const Home = () => {
+import DebugHome from "./home/index";
+import { GetServerSideProps } from "next";
+import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+
+const Home = (props:any) => {
+	
 	return (
 		<>
 			<Head>
@@ -10,7 +14,7 @@ const Home = () => {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<DebugHome/>
+			<DebugHome projects={props.User.project}/>
 			{/* <Router>
 					<div>
 						<Routes>
@@ -23,3 +27,23 @@ const Home = () => {
 }
 
 export default Home
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const supabase = createServerSupabaseClient(context);
+	const { data: { session }, } = await supabase.auth.getSession()
+	if (!session)
+    return {
+      redirect: {
+        destination: '/auth/login',
+        permanent: false,
+      },
+    }
+	const { data:User, error } = await supabase
+			  .from("user")
+			  .select('*, project(*)')
+			  .eq('authId',session.user.id)
+			  .single()
+			 console.log(session.user.id)
+	return {
+	  props: { session,User },
+	};
+  }; 

@@ -1,17 +1,25 @@
+import { Database } from "@/types/supabase";
 import { CheckIcon } from "@heroicons/react/24/outline";
+type Flow = Database["public"]["Tables"]["flow"]["Row"];
 
-export default function Stepper() {
+export default function Stepper({ flow }: { flow: Flow[] }) {
 	return (
-<ol className="relative text-gray-500 border-l border-gray-200">                  
-    <li className="mb-10 ml-6">            
-        <span className="absolute flex ml-1 items-center justify-center w-6 h-6 bg-green-200 rounded-full -left-4 ring-4 ring-white">
-          
-            <CheckIcon className="w-3 h-3 text-green-500" />
-        </span>
-        <h3 className="font-normal leading-tight">Personal Info</h3>
-        <p className="text-xs">Step details here</p>
-    </li>
-    <li className="mb-10 ml-6">
+		<ol className="relative text-gray-500 border-l border-gray-200">
+			{flow.map((data) => (
+				<li key={data.id} className="mb-10 ml-6">
+					<span className="absolute flex ml-1 items-center justify-center w-6 h-6 bg-green-200 rounded-full -left-4 ring-4 ring-white">
+						<CheckIcon className="w-3 h-3 text-green-500" />
+					</span>
+					<p className="text-base">
+						{data.name}{" "}
+						<code className="ml-4 text-xs">
+							{new Date(data.created_at!).toLocaleString("en-US")}
+						</code>
+					</p>
+					<code className="text-xs">{data.name}</code>
+				</li>
+			))}
+			{/* <li className="mb-10 ml-6">
         <span className="absolute flex ml-1 items-center justify-center w-6 h-6 bg-gray-100 rounded-full -left-4 ring-4 ring-white ">
         <CheckIcon className="w-3 h-3 text-green-500" />
         </span>
@@ -31,6 +39,7 @@ export default function Stepper() {
         </span>
         <h3 className="font-normal leading-tight">Confirmation</h3>
         <p className="text-xs">Step details here</p>
-    </li>
-</ol>
-    )}
+    </li> */}
+		</ol>
+	);
+}
