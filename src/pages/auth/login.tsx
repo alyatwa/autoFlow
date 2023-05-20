@@ -14,7 +14,7 @@ export default function Login() {
 	const session = useSession()
 console.log(session)
 	if (session) {
-        router.push('/')
+        router.push('/dashboard')
 	}
     const formik = useFormik({
         initialValues: {
@@ -29,7 +29,7 @@ console.log(session)
           email: values.email,
           password: values.password,
         })
-        if (data) router.push('/')
+        if (data) router.push('/dashboard')
       }
 
 

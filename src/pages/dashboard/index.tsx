@@ -5,15 +5,15 @@ import { EllipsisVerticalIcon, PlusIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import GDialog from "@/components/common/Dialog";
 import { useFormik } from "formik";
-import supabase from "@/utils/supabase";
 import { useMutation } from "@tanstack/react-query";
+import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import { GetServerSideProps } from "next";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 type Project = Database["public"]["Tables"]["project"]["Row"];
 
-export default function Dashboard({
-	projects: projectsData,
-}: {
-	projects: Project[];
-}) {
+export default function Dashboard(props:any) {
+	const supabaseClient = useSupabaseClient<Database>();
+	const projectsData: Project[] = props.Projects
 	let [projects, setProjects] = useState<any>(projectsData);
 	let [isOpen, setIsOpen] = useState(false);
 	const toggleDialog = () => {
@@ -21,12 +21,12 @@ export default function Dashboard({
 	};
 	const { mutate, isLoading } = useMutation(
 		async (newProject: Project): Promise<any> => {
-			await supabase.from("project").insert([newProject]);
+			await supabaseClient.from("project").insert([newProject]);
 		},
 		{
 			onSuccess: async () => {
-				const session = await supabase.auth.getSession();
-				const { data: newProjects } = await supabase
+				const session = await supabaseClient.auth.getSession();
+				const { data: newProjects } = await supabaseClient
 					.from("project")
 					.select("*")
 					.eq("userId", session.data.session?.user.id)
@@ -42,7 +42,6 @@ export default function Dashboard({
 	async function onSubmit(values: any) {
 		mutate(values);
 	}
-
 	const NewProject = () => {
 		const formik = useFormik({
 			initialValues: {
@@ -171,3 +170,23 @@ export default function Dashboard({
 		</ClientLayout>
 	);
 }
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const supabase = createServerSupabaseClient(context);
+	const { data: { session }, } = await supabase.auth.getSession()
+	if (!session)
+    return {
+      redirect: {
+        destination: '/auth/login',
+        permanent: false,
+      },
+    }
+	const { data:Projects, error } = await supabase
+			  .from("project")
+			  .select('*')
+			  .eq('userId',session.user.id)
+			  .order('created_at', {ascending:false})
+			 //console.log(Projects, error)
+	return {
+	  props: { session,Projects },
+	};
+  };
