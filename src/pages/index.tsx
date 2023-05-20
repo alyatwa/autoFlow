@@ -1,8 +1,9 @@
 import Head from "next/head";
 //import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import DebugHome from "./home/index";
-import { GetServerSideProps } from "next";
+import { GetServerSideProps, GetStaticProps } from "next";
 import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
+import supabase from "@/utils/supabase";
 
 const Home = (props:any) => {
 	
@@ -14,7 +15,7 @@ const Home = (props:any) => {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<DebugHome projects={props.User.project}/>
+			<DebugHome projects={props.Projects}/>
 			{/* <Router>
 					<div>
 						<Routes>
@@ -27,7 +28,9 @@ const Home = (props:any) => {
 }
 
 export default Home
-export const getServerSideProps: GetServerSideProps = async (context) => {
+
+
+ export const getServerSideProps: GetServerSideProps = async (context) => {
 	const supabase = createServerSupabaseClient(context);
 	const { data: { session }, } = await supabase.auth.getSession()
 	if (!session)
@@ -37,13 +40,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         permanent: false,
       },
     }
-	const { data:User, error } = await supabase
-			  .from("user")
-			  .select('*, project(*)')
-			  .eq('authId',session.user.id)
-			  .single()
-			 console.log(session.user.id)
+	const { data:Projects, error } = await supabase
+			  .from("project")
+			  .select('*')
+			  .eq('userId',session.user.id)
+			  .order('created_at', {ascending:false})
+			 //console.log(Projects, error)
 	return {
-	  props: { session,User },
+	  props: { session,Projects },
 	};
-  }; 
+  };

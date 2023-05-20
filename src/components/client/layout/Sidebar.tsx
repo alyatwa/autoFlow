@@ -1,3 +1,4 @@
+import { Cog6ToothIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
 export default function Sidebar() {
@@ -67,42 +68,16 @@ export default function Sidebar() {
 											className="text-gray-600 hover:bg-gray-200 hover:text-gray-900 group/link flex items-center rounded-md px-2 py-2 text-sm font-medium transition-colors"
 											href="#"
 										>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												fill="none"
-												viewBox="0 0 24 24"
-												strokeWidth="1.5"
-												stroke="currentColor"
-												aria-hidden="true"
-												className="text-gray-400 group-hover/link:text-gray-500 mr-3 h-6 w-6 flex-shrink-0 transition-colors"
-											>
-												<path
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"
-												></path>
-											</svg>
-											Projects
+											<DocumentTextIcon className="text-gray-400 group-hover/link:text-gray-500 mr-3 h-6 w-6 flex-shrink-0 transition-colors"
+											/>
+											Documentation
 										</a>
 										<a
 											className="text-gray-600 hover:bg-gray-200 hover:text-gray-900 group/link flex items-center rounded-md px-2 py-2 text-sm font-medium transition-colors"
 											href="https://demo.craftable.pro/admin/media"
 										>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												fill="none"
-												viewBox="0 0 24 24"
-												strokeWidth="1.5"
-												stroke="currentColor"
-												aria-hidden="true"
-												className="text-gray-400 group-hover/link:text-gray-500 mr-3 h-6 w-6 flex-shrink-0 transition-colors"
-											>
-												<path
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-												></path>
-											</svg>
+											<Cog6ToothIcon className="text-gray-400 group-hover/link:text-gray-500 mr-3 h-6 w-6 flex-shrink-0 transition-colors"
+											/>
 											Settings
 										</a>
 									</div>
