@@ -1,5 +1,5 @@
 import { Database } from "@/types/supabase";
-import { Cog6ToothIcon } from "@heroicons/react/24/outline";
+import { ClipboardIcon, PlusIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 type Project = Database['public']['Tables']['project']['Row']
@@ -37,29 +37,16 @@ export default function UnitsTable({project}:{project:Project}) {
 										type="button"
 										className="inline-flex cursor-pointer items-center justify-center rounded-md font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 border border-gray-300 bg-white text-gray-600 hover:bg-gray-50 active:bg-gray-100 shadow-sm px-4 py-2 text-xs"
 									>
-										<Cog6ToothIcon className="-ml-1 mr-3 h-5 w-5 flex-shrink-0 stroke-2"
+										<ClipboardIcon className="-ml-1 mr-3 h-5 w-5 flex-shrink-0 stroke-2"
 										/>
-										{project.name} settings
+										Copy {project.name} ID
 									</button>
 									<button
 										type="button"
 										className="inline-flex cursor-pointer items-center justify-center rounded-md font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 border border-transparent text-white bg-primary-600 hover:bg-primary-700 active:bg-primary-800 shadow-sm px-4 py-2 text-xs"
 									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											strokeWidth="1.5"
-											stroke="currentColor"
-											aria-hidden="true"
-											className="-ml-1 mr-3 h-5 w-5 flex-shrink-0 stroke-2"
-										>
-											<path
-												strokeLinecap="round"
-												strokeLinejoin="round"
-												d="M12 4.5v15m7.5-7.5h-15"
-											></path>
-										</svg>
+										<PlusIcon className="-ml-1 mr-3 h-5 w-5 flex-shrink-0 stroke-2"
+										/>
 										New Unit
 									</button>
 								</div>

@@ -31,12 +31,12 @@ export default function GDialog({children, isOpen, closeDialog}:{children:ReactN
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title
+                  {/* <Dialog.Title
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
                     New Project
-                  </Dialog.Title>
+                  </Dialog.Title> */}
                   <div className="mt-2">
                     {children}
                     {/* <p className="text-sm text-gray-500">
