@@ -171,7 +171,7 @@ export default function UnitForm({projectId,closeDialog, updateUnit, refreshUnit
                 <div className="mt-4 flex place-content-between">
                     <div>
                         <button
-                            disabled={updateUnit ? isUpdating : isLoading}
+                            disabled={isUpdating || isLoading}
                             type="submit"
                             className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                         >
@@ -187,10 +187,10 @@ export default function UnitForm({projectId,closeDialog, updateUnit, refreshUnit
                     </div>
                     {updateUnit && <button
                         onClick={() => removeUnit()}
-                        type="button"
+                        type="button" disabled={isRemoving}
                         className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                     >
-                        Remove
+                        {isRemoving? 'Removing...':'Remove'}
                     </button>}
                 </div>
             </form>

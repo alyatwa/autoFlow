@@ -215,7 +215,7 @@ export default function Dashboard(props: any) {
 					<div className="mt-4 flex place-content-between">
 						<div>
 							<button
-								disabled={updateProject ? isUpdating : isLoading}
+								disabled={isUpdating || isLoading}
 								type="submit"
 								className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
 							>
@@ -229,13 +229,13 @@ export default function Dashboard(props: any) {
 								Cancel
 							</button>
 						</div>
-						<button
+						{updateProject && <button disabled={isRemoving}
 							onClick={() => removeProject()}
 							type="button"
 							className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
 						>
-							Remove
-						</button>
+							{isRemoving? 'Removing...':'Remove'}
+						</button>}
 					</div>
 				</form>
 			</>
