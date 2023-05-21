@@ -1,10 +1,11 @@
 import { Database } from "@/types/supabase";
-import { ClipboardIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { ClipboardIcon, EllipsisVerticalIcon, PlusIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 type Project = Database['public']['Tables']['project']['Row']
+type Unit = Database['public']['Tables']['unit']['Row']
 
-export default function UnitsTable({project}:{project:Project}) {
+export default function UnitsTable({project, newUnit, updateUnit}:{project:Project,updateUnit:(unit:Unit, projectID:string)=>void,newUnit:(projectID:string)=>void}) {
 	const { asPath } = useRouter();
 			  
 	
@@ -33,15 +34,15 @@ export default function UnitsTable({project}:{project:Project}) {
 							</div>
 							<div>
 								<div className="flex gap-3">
-									<button
+									{/* <button
 										type="button"
 										className="inline-flex cursor-pointer items-center justify-center rounded-md font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 border border-gray-300 bg-white text-gray-600 hover:bg-gray-50 active:bg-gray-100 shadow-sm px-4 py-2 text-xs"
 									>
 										<ClipboardIcon className="-ml-1 mr-3 h-5 w-5 flex-shrink-0 stroke-2"
 										/>
 										Copy {project.name} ID
-									</button>
-									<button
+									</button> */}
+									<button onClick={()=>newUnit(project.id)}
 										type="button"
 										className="inline-flex cursor-pointer items-center justify-center rounded-md font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 border border-transparent text-white bg-primary-600 hover:bg-primary-700 active:bg-primary-800 shadow-sm px-4 py-2 text-xs"
 									>
@@ -135,25 +136,11 @@ export default function UnitsTable({project}:{project:Project}) {
 														data-headlessui-state=""
 														className="flex"
 													>
-														<button
+														<button onClick={()=>updateUnit(unit, project.id)}
 															type="button"
 															className="inline-flex cursor-pointer items-center justify-center rounded-md font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 border border-gray-300 bg-white text-gray-600 hover:bg-gray-50 active:bg-gray-100 shadow-sm px-3 py-1.5 text-xs !px-2 !py-2"
 														>
-															<svg
-																xmlns="http://www.w3.org/2000/svg"
-																fill="none"
-																viewBox="0 0 24 24"
-																strokeWidth="1.5"
-																stroke="currentColor"
-																aria-hidden="true"
-																className="w-4 h-4"
-															>
-																<path
-																	strokeLinecap="round"
-																	strokeLinejoin="round"
-																	d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
-																></path>
-															</svg>
+															<EllipsisVerticalIcon className="w-4 h-4"/>
 														</button>
 													</div>
 												</div>
