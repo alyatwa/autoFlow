@@ -2,7 +2,7 @@ import { Database } from "@/types/supabase";
 import supabase from "@/utils/supabase";
 import { Menu, Transition } from "@headlessui/react";
 import {
-	UserIcon,
+	UserIcon,UserCircleIcon,
 	ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
@@ -77,10 +77,9 @@ export default function Header() {
 								<Menu as="div" className="relative inline-block text-left">
 									<div>
 										<Menu.Button>
-											<img
-												className="w-10 h-10 rounded-full"
-												src="https://demo.craftable.pro/media/10/conversions/400-thumb.jpg"
-											></img>
+											<UserCircleIcon
+												className="w-8 h-8 rounded-full text-gray-500"
+											/>
 										</Menu.Button>
 									</div>
 									<Transition
