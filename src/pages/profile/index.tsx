@@ -80,7 +80,7 @@ export default function Profile(props: any) {
 										</label>
 									</div>
 
-									<div className="flex flex-col gap-2 w-60">
+									<div className="flex flex-col gap-2 w-72">
 										<div className="relative flex rounded-md shadow-sm">
 											<div className="relative w-full">
 												<div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
@@ -111,7 +111,7 @@ export default function Profile(props: any) {
 										</label>
 									</div>
 
-									<div className="flex flex-col gap-2 w-60">
+									<div className="flex flex-col gap-2 w-72">
 										<div className="relative flex rounded-md shadow-sm">
 											<div className="relative w-full">
 												<div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
@@ -142,7 +142,7 @@ export default function Profile(props: any) {
 										</label>
 									</div>
 
-									<div className="flex flex-col gap-2 w-60">
+									<div className="flex flex-col gap-2 w-72">
 										<div className="relative flex rounded-md shadow-sm">
 											<div className="relative w-full">
 												<div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
@@ -173,7 +173,7 @@ export default function Profile(props: any) {
 										</label>
 									</div>
 
-									<div className="flex flex-col gap-2 w-60">
+									<div className="flex flex-col gap-2 w-72">
 										<div className="relative flex rounded-md shadow-sm">
 											<div className="relative w-full">
 												<div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>

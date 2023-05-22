@@ -36,7 +36,9 @@ export default function Dashboard(props: any) {
 	};
 	const { mutate: createProject, isLoading } = useMutation(
 		async (newProject: Project): Promise<any> => {
-			await supabaseClient.from("project").insert([newProject]);
+			const {data, error} =await supabaseClient.from("project").insert([newProject]);
+			if (error) throw new Error(error.message)
+			return data
 		},
 		{
 			onSuccess: async () => {
@@ -49,8 +51,9 @@ export default function Dashboard(props: any) {
 				setProjects(newProjects);
 				handleClose();
 			},
-			onError: (e) => {
+			onError: (e:string) => {
 				console.log(e);
+				toast.error(e.toString());
 			},
 		}
 	);
