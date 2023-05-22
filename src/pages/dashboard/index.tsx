@@ -15,6 +15,7 @@ import { GetServerSideProps } from "next";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Dialog } from "@headlessui/react";
 import toast, { Toaster } from "react-hot-toast";
+import Head from "next/head";
 type Project = Database["public"]["Tables"]["project"]["Row"];
 
 export default function Dashboard(props: any) {
@@ -245,8 +246,11 @@ export default function Dashboard(props: any) {
 		);
 	};
 
-	return (
+	return ( 
 		<ClientLayout>
+			<Head>
+				<title>Dashboard</title>
+			</Head>
 			<Toaster position="top-center" reverseOrder={false} />
 			<GDialog
 				isOpen={isOpen}

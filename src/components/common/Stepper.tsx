@@ -10,12 +10,12 @@ export default function Stepper({ flow }: { flow: Flow[] }) {
 				<li key={data.id} className="mb-10 ml-6">
 					<FlowStatus status={parseInt(data.status!)} />
 					<p className="text-base">
-						{data.name}{" "}
+						{data.title}{" "}
 						<code className="ml-4 text-xs">
 							{new Date(data.created_at!).toLocaleString("en-US")}
 						</code>
 					</p>
-					<code className="text-xs">{data.name}</code>
+					<code className="text-xs">{data.description}</code>
 				</li>
 			))}
 			{/* <li className="mb-10 ml-6">
