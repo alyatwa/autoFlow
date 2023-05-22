@@ -16,6 +16,7 @@ import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Dialog } from "@headlessui/react";
 import toast, { Toaster } from "react-hot-toast";
 import Head from "next/head";
+import { sendFlow } from '../../utils/sendFlow';
 type Project = Database["public"]["Tables"]["project"]["Row"];
 
 export default function Dashboard(props: any) {
@@ -37,12 +38,14 @@ export default function Dashboard(props: any) {
 	};
 	const { mutate: createProject, isLoading } = useMutation(
 		async (newProject: Project): Promise<any> => {
-			const {data, error} =await supabaseClient.from("project").insert([newProject]);
+			const {data, error} =await supabaseClient.from("project").insert([newProject]).select();
 			if (error) throw new Error(error.message)
 			return data
 		},
 		{
-			onSuccess: async () => {
+			onSuccess: async (data) => {
+				handleClose();
+				await sendFlow("24fd53e4-34f3-4fcd-9d27-a36b18955883", "ali", "add project", "signup unit", 1)
 				const session = await supabaseClient.auth.getSession();
 				const { data: newProjects } = await supabaseClient
 					.from("project")
@@ -50,7 +53,7 @@ export default function Dashboard(props: any) {
 					.eq("userId", session.data.session?.user.id)
 					.order("created_at", { ascending: false });
 				setProjects(newProjects);
-				handleClose();
+				
 			},
 			onError: (e:string) => {
 				console.log(e);

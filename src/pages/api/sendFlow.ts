@@ -39,10 +39,11 @@ export default async function handler(req: any, res: any) {
 			const { data: newSessionData, error: newSessionError } = await supabase
 				.from("session")
 				.insert({ unitId, tag: userTag })
-                .select();;
-
+                .select()
+				.single()
 			if (newSessionData) {
 				const { flowData, flowError } = await createFlow(newSessionData.id);
+				
 				if (flowData) {
                     
                     res.status(200).json({ msg: flowData });
@@ -66,7 +67,8 @@ export default async function handler(req: any, res: any) {
 					metadata,
 					status,
 				},
-			]).select();;
+			]).select()
+			.single();
 		return { flowData, flowError };
 	}
 }
