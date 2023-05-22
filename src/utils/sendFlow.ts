@@ -28,7 +28,7 @@ export async function sendFlow(
 				flowDescription,
 			}),
 		};
-		const response = await fetch("http://localhost:3000/api/sendFlow", options);
+		const response = await fetch("https://auto-flow-murex.vercel.app/api/sendFlow", options);
 		const jsonData = await response.json();
 
 
