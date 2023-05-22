@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar"
 const ClientLayout = ({ children }: { children: any }) => (
     <div>
     <Sidebar />
-    <div className="flex flex-1 flex-col md:pl-64">
+    <div className="flex flex-1 flex-col md:pl-[220px]">
         <main className="flex min-h-screen flex-1 flex-col">
             <Header />
             <div className="relative flex flex-1 bg-gray-100 items-stretch overflow-hidden">
