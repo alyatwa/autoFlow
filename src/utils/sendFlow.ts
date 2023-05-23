@@ -56,7 +56,7 @@ export async function sendFlow(
           }
           function getDeviceName() {
             let device = "Unknown";
-            const ua = {
+            const ua:any = {
                 "Generic Linux": /Linux/i,
                 "Android": /Android/i,
                 "BlackBerry": /BlackBerry/i,
